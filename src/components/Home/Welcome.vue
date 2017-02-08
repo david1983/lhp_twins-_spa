@@ -6,10 +6,11 @@
 </template>
 
 <script>
-
+  import state from '../../state/app_state'
 
 export default {
-  name: 'welcome'
+  name: 'welcome',
+  data(){ return state}
 }
 </script>
 

@@ -9,18 +9,17 @@
 </template>
 
 <script>
-
+  import bus from "../../bus"
+  import state from '../../state/app_state'
 
 export default {
   name: 'login',
   data(){
-    return {
-      user:{}
-    }
+    return state
   },
   methods: {
     login(){
-      console.log(this.user.email, this.user.password)
+      state.title="changed"
     }
   }
 }

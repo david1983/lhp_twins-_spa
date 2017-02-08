@@ -9,14 +9,12 @@
 </template>
 
 <script>
-
+  import state from '../../state/app_state'
 
 export default {
   name: 'register',
   data(){
-    return {
-      user:{}
-    }
+    return state
   },
   methods: {
     register(){

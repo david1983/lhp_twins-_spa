@@ -5,10 +5,11 @@
 </template>
 
 <script>
-
+  import state from '../../state/app_state'
 
 export default {
-  name: 'user'
+  name: 'user',
+  data(){ return state;}
 }
 </script>
 
