@@ -11,7 +11,7 @@ class User{
       this.password = pass
     }
     this.t = Cookies.get("t");
-    axios.defaults.headers.common['Authorization'] = this.t;
+    if(this.t) axios.defaults.headers.common['Authorization'] = this.t;
   }
 
   login(){
@@ -22,15 +22,19 @@ class User{
         if (!r.data.token) return Promise.reject('Incorrect email or password')
         return Promise.resolve(r.data.token)
       }).then((token)=>{
+        this.t = token;
         Cookies.set("t", token)
-        return this.loginToken(token)
+        return this.loginToken()
       })
   }
 
   loginToken(){
+    console.log(this.t)
     if(!this.t) return Promise.reject("no token specified")
+    axios.defaults.headers.common['Authorization'] = this.t;
     return axios.get(state.config.api.url +'/api/user/profile')
       .then((userData)=>{
+        if(userData.data.error) return Promise.reject({err: userData.data.error})
         delete userData.data.password;
         Object.assign(this, userData.data)
         this.loggedIn = true;
@@ -39,8 +43,14 @@ class User{
   }
 
   logout() {
+    var t = Cookies.get("t")
+    console.log(t)
+    Cookies.set("t", null)
+    t = Cookies.get("t")
+    console.log(t)
     this.loggedIn = false;
     this.profile = null;
+
   }
 
   register(){

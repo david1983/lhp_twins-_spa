@@ -24,6 +24,6 @@ export default new Router({
   mode: 'history',
   routes: [
     homeRoute,
-    {path: 'profile', component: Profile}
+    {path: '/profile', component: Profile}
   ]
 })

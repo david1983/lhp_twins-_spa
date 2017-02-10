@@ -1,15 +1,21 @@
 <template>
   <div>
-    <h1>Normal User</h1>
-    <input type="email" v-model="user.email"/>
-    <input type="text" v-model="user.first_name" placeholder="name"/>
-    <input type="text" v-model="user.last_name" placeholder="surname"/>
-    <input type="text" v-model="user.address" placeholder="address"/>
-    <input type="text" v-model="user.country" placeholder="country"/>
-    <input type="text" v-model="user.town" placeholder="town"/>
-    <input type="text" v-model="user.phone" placeholder="phone"/>
-    <input type="date" v-model="user.dob" placeholder="date of birth"/>
-    <button @click="edit()">Edit</button>
+    <h1>{{user.first_name}} {{user.last_name}}</h1>
+
+    <div class="column">
+      <div class="row"><div>Name:</div><div>{{user.first_name}}</div></div>
+      <div class="row"><div>Surname:</div><div>{{user.last_name}}</div></div>
+      <div class="row"><div>Town:</div><div>{{user.town}}</div></div>
+      <div class="row"><div>Address:</div><div>{{user.adddress}}</div></div>
+      <div class="row"><div>Country:</div><div>{{user.country}}</div></div>
+      <div class="row"><div>Email:</div><div>{{user.email}}</div></div>
+      <div class="row"><div>Phone:</div><div>{{user.phone}}</div></div>
+      <div class="row"><div>Birth date:</div><div>{{user.dob }}</div></div>
+    </div>
+    <br>
+    <div>
+      <a href="/profile">Edit profile</a>
+    </div>
   </div>
 </template>
 
@@ -19,13 +25,7 @@
 export default {
   name: 'normal-user',
   data(){ return state;},
-  methods: {
-    edit(){
-      state.user.save().then((r)=>{
-        console.log(r)
-      })
-    }
-  }
+
 }
 </script>
 

@@ -23,7 +23,7 @@ export default {
     login(){
       let myUser = new User(this.user.email, this.user.password)
       myUser.login().then((r)=>{
-        state.user = {loggedIn: true, name: 'dave', role: 0}
+        state.user = myUser;
         this.$router.push('/')
       }).catch((e)=>{
         console.log(e)
