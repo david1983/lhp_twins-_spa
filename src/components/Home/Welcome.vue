@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-if="!user.loggedIn">
-      <a class="btn" href="/login">Login</a>
-      <a class="btn" href="/register">Register</a>
+      <router-link class="btn" to="/login">Login</router-link>
+      <router-link class="btn" to="/register">Register</router-link>
     </div>
     <div v-if="user.loggedIn">
       <admin-user v-if="user.role==1"></admin-user>

@@ -14,7 +14,7 @@
     </div>
     <br>
     <div>
-      <a href="/profile">Edit profile</a>
+      <router-link to="/profile">Edit profile</router-link>
     </div>
   </div>
 </template>

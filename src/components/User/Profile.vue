@@ -32,6 +32,8 @@
 export default {
   name: 'Profile',
   data(){
+
+//    if(!state.user.loggedIn)this.$router.push('/')
     return state
   },
   methods: {

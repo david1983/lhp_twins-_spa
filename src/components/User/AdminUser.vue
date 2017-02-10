@@ -1,6 +1,16 @@
 <template>
   <div>
     <h1>Admin View</h1>
+    <p>Hi {{user.first_name}}, welcome back</p>
+
+    <h3>Users list</h3>
+    <table>
+      <thead>
+        <th>
+          <td></td>
+        </th>
+      </thead>
+    </table>
   </div>
 </template>
 

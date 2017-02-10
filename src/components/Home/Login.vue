@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h1>{{user.name}}</h1>
-
-    <input type="email" v-model="user.email"/>
+    <h1>Login</h1>
     <br>
-    <input type="password" v-model="user.password"/>
+    <input type="email" v-model="user.email" placeholder="email"/>
     <br>
-    <button class="btn" @click="login">Login</button>
+    <input type="password" v-model="user.password" placeholder="password"/>
+    <br><br>
+    <button class="btn" @click="login">Login</button><br><br>
+    <router-link to="/">go back</router-link>
   </div>
 </template>
 

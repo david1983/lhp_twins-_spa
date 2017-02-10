@@ -3,12 +3,17 @@
 
   <div>
     <h1 v-if="success">Registration Completed</h1>
+    <h1>Register</h1>
+    <br>
     <div v-if="!success">
-      <input type="email" v-model="user.email"/>
+      <input type="email" v-model="user.email" placeholder="email"/>
       <br>
-      <input type="password" v-model="user.password"/>
-      <br>
+      <input type="password" v-model="user.password" placeholder="password"/>
+      <br><br>
       <button class="btn" @click="register">Register</button>
+      <br>
+      <br>
+      <router-link to="/">go back</router-link>
     </div>
   </div>
 </template>

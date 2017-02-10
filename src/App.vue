@@ -13,10 +13,10 @@ export default {
   name: 'app',
   data(){
     var user = new User();
+    console.log(state.user.loggedIn)
     if(user.t && !state.user.loggedIn){
       user.loginToken()
         .then(()=>{
-          console.log(user)
           if(user.loggedIn){
             this.user = user;
             if(window.location.pathname=='/')
@@ -33,13 +33,19 @@ export default {
 </script>
 
 <style>
+  html, body{
+    height:100%;
+    margin:0;
+  }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height:100%;
+
 }
 
 .column{
