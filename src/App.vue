@@ -5,8 +5,24 @@
 </template>
 
 <script>
+  import state from './state/app_state'
+  import User from './services/user'
 export default {
-  name: 'app'
+  name: 'app',
+  data(){
+    var user = new User();
+    if(user.t){
+      user.loginToken()
+        .then(()=>{
+          console.log(user)
+          if(user.loggedIn){
+            this.user = user;
+            this.$router.push('/')
+          }
+        })
+    }
+    return state;
+  }
 }
 </script>
 

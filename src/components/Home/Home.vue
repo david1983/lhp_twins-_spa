@@ -1,28 +1,27 @@
 <template>
   <div class="home">
-    <section>
-      {{title}}
-      <!--<div><img src="../assets/logo.png"/></div>-->
-    </section>
-    <section>
-      <router-view></router-view>
-    </section>
+    <router-view v-if="user.loggedIn"></router-view>
+    <div v-if="!user.loggedIn">
+      <section>
+        {{title}}
+        <!--<div><img src="../assets/logo.png"/></div>-->
+      </section>
+      <section>
+        <router-view></router-view>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
-  import bus from "../../bus"
   import state from '../../state/app_state'
 
-  var h = {
+  export default {
     name: 'home',
     data () {
       return state
     }
   }
-
-
-  export default h
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

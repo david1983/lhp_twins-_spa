@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h1>{{user.name}}</h1>
+
     <input type="email" v-model="user.email"/>
     <br>
     <input type="password" v-model="user.password"/>
@@ -9,8 +11,8 @@
 </template>
 
 <script>
-  import bus from "../../bus"
   import state from '../../state/app_state'
+  import User from '../../services/user'
 
 export default {
   name: 'login',
@@ -19,7 +21,16 @@ export default {
   },
   methods: {
     login(){
-      state.title="changed"
+      let myUser = new User(this.user.email, this.user.password)
+      myUser.login().then((r)=>{
+        state.user = {loggedIn: true, name: 'dave', role: 0}
+        this.$router.push('/')
+      }).catch((e)=>{
+        console.log(e)
+        this.error = e;
+      })
+
+
     }
   }
 }

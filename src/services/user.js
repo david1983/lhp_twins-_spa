@@ -1,11 +1,41 @@
+import state from '../state/app_state'
+import axios from 'axios';
+import Cookies from 'cookies-js'
+
 class User{
 
-  constructor(){
+  constructor(email, pass){
     this.loggedIn = false;
+    if(email && pass){
+      this.email = email;
+      this.password = pass
+    }
+    this.t = Cookies.get("t");
+    axios.defaults.headers.common['Authorization'] = this.t;
   }
 
-  login(email, pass){
+  login(){
+    let postData = { email: this.email, password: this.password}
 
+    return axios.post(state.config.api.url + '/api/user/login', postData)
+      .then((r)=> {
+        if (!r.data.token) return Promise.reject('Incorrect email or password')
+        return Promise.resolve(r.data.token)
+      }).then((token)=>{
+        Cookies.set("t", token)
+        return this.loginToken(token)
+      })
+  }
+
+  loginToken(){
+    if(!this.t) return Promise.reject("no token specified")
+    return axios.get(state.config.api.url +'/api/user/profile')
+      .then((userData)=>{
+        delete userData.data.password;
+        Object.assign(this, userData.data)
+        this.loggedIn = true;
+        return Promise.resolve();
+    })
   }
 
   logout() {
@@ -13,16 +43,21 @@ class User{
     this.profile = null;
   }
 
-  register(user){
+  register(){
+    if(!this.email || !this.password) return Promise.reject('no email or password provided')
+    let postData = { email: this.email, password: this.password}
+
+    return axios.post(state.config.api.url + '/api/user/register', postData)
 
   }
 
-  getProfile(){
-    return this.profile;
-  }
-
-  setProfile(profile){
-    this.profile = profile
+  save(){
+    if(!this.loggedIn) return Promise.reject("not logged in")
+    if(!this.id) return Promise.reject("no id in user")
+    return axios.post(state.config.api.url + '/api/user/' + this.id, this)
   }
 
 }
+
+
+export default User

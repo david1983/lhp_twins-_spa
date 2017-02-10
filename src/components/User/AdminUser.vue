@@ -1,10 +1,15 @@
 <template>
-  <nav></nav>
+  <div>
+    <h1>Admin View</h1>
+  </div>
 </template>
 
 <script>
+  import state from '../../state/app_state'
+
 export default {
-  name: 'nav',
+  name: 'admin-user',
+  data(){ return state;}
 }
 </script>
 
