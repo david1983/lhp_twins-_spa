@@ -11,7 +11,7 @@ class User{
       this.password = pass
     }
     this.t = Cookies.get("t");
-    if(this.t) axios.defaults.headers.common['Authorization'] = this.t;
+    if(this.t!=null) axios.defaults.headers.common['Authorization'] = this.t;
   }
 
   login(){
@@ -48,6 +48,7 @@ class User{
     Cookies.set("t", null)
     t = Cookies.get("t")
     console.log(t)
+    delete this.t;
     this.loggedIn = false;
     this.profile = null;
 

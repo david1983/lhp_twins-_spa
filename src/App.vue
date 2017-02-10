@@ -14,15 +14,20 @@ export default {
   data(){
     var user = new User();
     console.log(state.user.loggedIn)
-    if(user.t && !state.user.loggedIn){
+    if(user.t!='null' && !state.user.loggedIn){
+
       user.loginToken()
         .then(()=>{
+          state.loaded = true;
           if(user.loggedIn){
             this.user = user;
             if(window.location.pathname=='/')
             this.$router.push('/')
           }
+
         })
+    }else{
+      state.loaded = true;
     }
     return state;
   },

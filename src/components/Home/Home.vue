@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <router-view v-if="user.loggedIn"></router-view>
-    <div v-if="!user.loggedIn" class="wrap">
+    <router-view v-if="user.loggedIn && loaded"></router-view>
+    <div v-if="!user.loggedIn && loaded" class="wrap">
       <section>
         <div>
           <img src="../../assets/logo.png"/>
