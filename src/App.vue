@@ -28,9 +28,9 @@ export default {
 //        }).catch((err)=>{
 //        console.log(err)
 //      })
-    }else{
-      state.loaded = true;
-    }
+//    }else{
+//      state.loaded = true;
+//    }
     return state;
   },
   components:{
