@@ -14,23 +14,23 @@ export default {
   data(){
     var user = new User();
     console.log(state)
-//    if(user.t!='null' && !state.user.loggedIn){
-//
-//      user.loginToken()
-//        .then(()=>{
-//          state.loaded = true;
-//          if(user.loggedIn){
-//            this.user = user;
-//            if(window.location.pathname=='/')
-//            this.$router.push('/')
-//          }
-//
-//        }).catch((err)=>{
-//        console.log(err)
-//      })
-//    }else{
-//      state.loaded = true;
-//    }
+    if(user.t!='null' && !state.user.loggedIn){
+
+      user.loginToken()
+        .then(()=>{
+          state.loaded = true;
+          if(user.loggedIn){
+            this.user = user;
+            if(window.location.pathname=='/')
+            this.$router.push('/')
+          }
+
+        }).catch((err)=>{
+        console.log(err)
+      })
+    }else{
+      state.loaded = true;
+    }
     return state;
   },
   components:{
