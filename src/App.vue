@@ -26,6 +26,7 @@ export default {
           }
 
         }).catch((err)=>{
+        state.loaded=true;
         console.log(err)
       })
     }else{
