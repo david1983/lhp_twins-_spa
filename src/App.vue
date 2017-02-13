@@ -25,7 +25,9 @@ export default {
             this.$router.push('/')
           }
 
-        })
+        }).catch((err)=>{
+        console.log(err)
+      })
     }else{
       state.loaded = true;
     }
