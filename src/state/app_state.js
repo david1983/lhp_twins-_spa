@@ -5,7 +5,7 @@ export default {
       // url: 'http://127.0.0.1:3000'
     }
   },
-  loaded: false,
+  loaded: true,
   title: 'LPH - Twins',
   user:{}
 }

@@ -13,7 +13,7 @@ export default {
   name: 'app',
   data(){
     var user = new User();
-    console.log(state.user.loggedIn)
+    console.log(state)
 //    if(user.t!='null' && !state.user.loggedIn){
 //
 //      user.loginToken()
