@@ -9,7 +9,9 @@
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e"
+    "test": "npm run unit && npm run e2e",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "aws-sdk": "^2.12.0",
@@ -18,7 +20,8 @@
     "s3": "^4.4.0",
     "vue": "^2.1.10",
     "vue-router": "^2.2.0",
-    "vuejs-datepicker": "^0.6.0"
+    "vuejs-datepicker": "^0.6.0",
+    "snyk": "^1.85.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -77,5 +80,6 @@
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
-  }
+  },
+  "snyk": true
 }
